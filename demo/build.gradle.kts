@@ -2,7 +2,9 @@ plugins {
     kotlin("multiplatform")
     id("com.google.devtools.ksp")
     kotlin("plugin.serialization")
+//    id("com.jamshedalamqaderi.tawra-ktor-api") version "0.0.1-SNAPSHOT"
 }
+
 
 ksp {
     arg("jvm-output-path", "$buildDir/generated/tawraapi/jvm/jvmMain/kotlin/")
@@ -26,7 +28,7 @@ kotlin {
             kotlin.srcDir("$buildDir/generated/tawraapi/metadata/commonMain/kotlin/")
             dependencies {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
-                implementation("com.soywiz.korlibs.korio:korio:$korioVersion")
+                implementation(project(":ksp-processor"))
             }
         }
         val commonTest by getting {
@@ -37,7 +39,6 @@ kotlin {
         val jvmMain by getting {
             kotlin.srcDir("$buildDir/generated/tawraapi/jvm/jvmMain/kotlin/")
             dependencies {
-                implementation(project(":ksp-processor"))
                 implementation("io.ktor:ktor-server-core:$ktorVersion")
                 implementation("io.ktor:ktor-server-netty:$ktorVersion")
                 implementation("ch.qos.logback:logback-classic:1.4.5")

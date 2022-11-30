@@ -1,10 +1,11 @@
 pluginManagement {
-
     repositories {
         gradlePluginPortal()
         google()
         mavenCentral()
     }
+
+
     dependencyResolutionManagement {
         val kspVersion: String by settings
         val kotlinVersion: String by settings
@@ -14,8 +15,8 @@ pluginManagement {
             kotlin("plugin.serialization") version kotlinVersion
         }
         repositories {
-            google()
             mavenCentral()
+            google()
         }
     }
 }
@@ -24,3 +25,4 @@ rootProject.name = "tawra-ktor-api"
 
 include(":ksp-processor")
 include(":demo")
+include(":gradle-plugin")

@@ -22,7 +22,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
-                implementation("com.soywiz.korlibs.korio:korio:$korioVersion")
+                api("com.soywiz.korlibs.korio:korio:$korioVersion")
             }
         }
         val commonTest by getting {
