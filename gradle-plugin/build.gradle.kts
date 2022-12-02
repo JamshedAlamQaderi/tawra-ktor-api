@@ -1,22 +1,41 @@
 plugins {
     `kotlin-dsl`
     `java-gradle-plugin`
-    id("com.gradle.plugin-publish") version "1.1.0"
+    alias(libs.plugins.pluginPublish)
 }
 
-pluginBundle{
+group = "com.jamshedalamqaderi"
+version = "0.0.1-SNAPSHOT"
+
+
+publishing {
+    repositories {
+        mavenLocal()
+    }
+}
+
+
+pluginBundle {
     website = "https://jamshedalamqaderi.com"
     vcsUrl = "https://github.com/JamshedAlamQaderi/tawra-ktor-api"
-    tags = listOf("ktor", "ktor-server", "ktor-client", "kotlin-multiplatform", "tawra-ktor-api")
+    tags = listOf(
+        "ktor",
+        "ktor-server",
+        "ktor-client",
+        "kotlin-multiplatform",
+        "tawra-ktor-api",
+        "tawra"
+    )
 }
 
 gradlePlugin {
     plugins {
-        create("tawra-ktor-api"){
-            id = "com.jamshedalamqaderi.tawra-ktor-api"
-            implementationClass = "com.jamshedalamqaderi.tawraktorapi.TawraKtorApiPluginKt"
+        create("tawra-ktor-api") {
+            id = "com.jamshedalamqaderi.tawra-ktor-api-plugin"
+            implementationClass = "com.jamshedalamqaderi.tawraktorapi.TawraKtorApiPlugin"
             displayName = "Tawra Ktor Api"
-            description = "A plugin for tawra-ktor-api library which generate client side code for ktor server"
+            description =
+                "A plugin for tawra-ktor-api library which generate client side code for ktor server"
         }
     }
 }

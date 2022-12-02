@@ -1,18 +1,14 @@
 plugins {
-    kotlin("multiplatform")
-    id("com.google.devtools.ksp")
-    kotlin("plugin.serialization")
-//    id("com.jamshedalamqaderi.tawra-ktor-api") version "0.0.1-SNAPSHOT"
+    id("com.jamshedalamqaderi.tawra-ktor-api-plugin")
 }
-
 
 ksp {
     arg("jvm-output-path", "$buildDir/generated/tawraapi/jvm/jvmMain/kotlin/")
     arg("common-output-path", "$buildDir/generated/tawraapi/metadata/commonMain/kotlin/")
 }
 
-val ktorVersion: String by project
-val korioVersion: String by project
+val ktorVersion: String = "2.1.3"
+val korioVersion: String = "2.2.0"
 
 kotlin {
     jvm {
@@ -51,5 +47,5 @@ kotlin {
 }
 
 dependencies {
-    add("kspJvm", project(":ksp-processor"))
+    add("kspJvm", "com.jamshedalamqader:tawra-ktor-api:0.0.1-SNAPSHOT")
 }

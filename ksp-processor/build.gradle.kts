@@ -1,13 +1,7 @@
-plugins {
-    kotlin("multiplatform")
-    id("com.google.devtools.ksp")
-    kotlin("plugin.serialization")
-}
-
-val kspVersion: String by project
-val kotlinPoetVersion: String by project
-val ktorVersion: String by project
-val korioVersion: String by project
+val kspVersion: String = "1.7.21-1.0.8"
+val kotlinPoetVersion: String = "1.12.0"
+val ktorVersion: String = "2.1.3"
+val korioVersion: String = "2.2.0"
 
 kotlin {
     jvm {

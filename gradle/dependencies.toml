@@ -1,0 +1,13 @@
+[versions]
+kspVersion = "1.7.21-1.0.8"
+kotlinVersion = "1.7.21"
+pluginPublishVersion = "1.1.0"
+
+[plugins]
+multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlinVersion" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinVersion" }
+kspPlugin = { id = "com.google.devtools.ksp", version.ref = "kspVersion" }
+pluginPublish = { id = "com.gradle.plugin-publish", version.ref = "pluginPublishVersion" }
+
+[libraries]
+ksp = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "kspVersion" }

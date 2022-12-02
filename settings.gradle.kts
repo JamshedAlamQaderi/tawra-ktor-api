@@ -1,28 +1,29 @@
 pluginManagement {
+
     repositories {
         gradlePluginPortal()
-        google()
         mavenCentral()
-    }
-
-
-    dependencyResolutionManagement {
-        val kspVersion: String by settings
-        val kotlinVersion: String by settings
-        plugins {
-            id("com.google.devtools.ksp") version kspVersion
-            kotlin("multiplatform") version kotlinVersion
-            kotlin("plugin.serialization") version kotlinVersion
-        }
-        repositories {
-            mavenCentral()
-            google()
-        }
+        google()
     }
 }
 
-rootProject.name = "tawra-ktor-api"
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        google()
+    }
+    versionCatalogs {
+        create("libs"){
+            from(files("./gradle/dependencies.toml"))
+        }
+    }
+}
+rootProject.name = "tawra-ktor-api-project"
 
+includeBuild("gradle-plugin"){
+//    dependencySubstitution {
+//        substitute(module("com.jamshedalamqaderi:tawra-ktor-api-plugin"))
+//    }
+}
 include(":ksp-processor")
-include(":demo")
-include(":gradle-plugin")
+include(":example")
