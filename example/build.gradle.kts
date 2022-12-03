@@ -13,7 +13,6 @@ kotlin {
     }
     sourceSets {
         val commonMain by getting {
-            kotlin.srcDir("$buildDir/generated/tawraapi/metadata/commonMain/kotlin/")
             dependencies {
                 implementation(libs.ktorClientCore)
                 implementation("com.jamshedalamqaderi:tawra-ktor-api")
@@ -25,7 +24,6 @@ kotlin {
             }
         }
         val jvmMain by getting {
-            kotlin.srcDir("$buildDir/generated/tawraapi/jvm/jvmMain/kotlin/")
             dependencies {
                 implementation(libs.ktorServerCore)
                 implementation(libs.ktorServerNetty)

@@ -4,6 +4,7 @@ buildscript {
     }
 }
 
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     `kotlin-dsl`
     `java-gradle-plugin`
@@ -47,7 +48,9 @@ gradlePlugin {
 }
 
 dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21")
     implementation("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.7.21-1.0.8")
+    implementation("com.facebook:ktfmt:0.41")
 }
 
 tasks.getByName<Test>("test") {
