@@ -1,3 +1,9 @@
+buildscript {
+    dependencies {
+        classpath("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.7.21-1.0.8")
+    }
+}
+
 plugins {
     `kotlin-dsl`
     `java-gradle-plugin`
@@ -41,7 +47,7 @@ gradlePlugin {
 }
 
 dependencies {
-
+    implementation("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.7.21-1.0.8")
 }
 
 tasks.getByName<Test>("test") {

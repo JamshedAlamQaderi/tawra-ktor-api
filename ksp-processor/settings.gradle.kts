@@ -2,7 +2,6 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         mavenCentral()
-        google()
     }
 }
 
@@ -13,12 +12,8 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("libs") {
-            from(files("./gradle/dependencies.toml"))
+            from(files("../gradle/dependencies.toml"))
         }
     }
 }
-rootProject.name = "tawra-ktor-api-project"
-
-include(":example")
-includeBuild("./gradle-plugin")
-includeBuild("./ksp-processor")
+rootProject.name = "tawra-ktor-api"

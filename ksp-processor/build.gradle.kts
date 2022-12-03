@@ -1,7 +1,10 @@
-val kspVersion: String = "1.7.21-1.0.8"
-val kotlinPoetVersion: String = "1.12.0"
-val ktorVersion: String = "2.1.3"
-val korioVersion: String = "2.2.0"
+plugins {
+    alias(libs.plugins.multiplatform)
+}
+
+
+group = "com.jamshedalamqaderi"
+version = "0.0.1-SNAPSHOT"
 
 kotlin {
     jvm {
@@ -15,8 +18,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-core:$ktorVersion")
-                api("com.soywiz.korlibs.korio:korio:$korioVersion")
+                implementation(libs.ktorClientCore)
+                api(libs.korio)
             }
         }
         val commonTest by getting {
@@ -26,11 +29,11 @@ kotlin {
         }
         val jvmMain by getting {
             dependencies {
-                implementation("com.google.devtools.ksp:symbol-processing-api:$kspVersion")
-                implementation("com.squareup:kotlinpoet:$kotlinPoetVersion")
-                implementation("com.squareup:kotlinpoet-ksp:$kotlinPoetVersion")
-                implementation("io.ktor:ktor-server-core:$ktorVersion")
-                implementation("io.ktor:ktor-server-netty:$ktorVersion")
+                implementation(libs.ksp)
+                implementation(libs.kotlinPoet)
+                implementation(libs.kotlinPoetKsp)
+                implementation(libs.ktorServerCore)
+                implementation(libs.ktorServerNetty)
             }
         }
         val jvmTest by getting
