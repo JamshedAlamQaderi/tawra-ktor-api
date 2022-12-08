@@ -1,6 +1,5 @@
 package com.jamshedalamqaderi.tawraktorapi.demo
 
-
 import io.ktor.serialization.kotlinx.KotlinxWebsocketSerializationConverter
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.install
@@ -15,11 +14,11 @@ import io.ktor.server.websocket.receiveDeserialized
 import io.ktor.server.websocket.timeout
 import io.ktor.server.websocket.webSocket
 import io.ktor.websocket.Frame
-import java.time.Duration
-import java.util.Collections
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
+import java.time.Duration
+import java.util.Collections
 
 fun main(): Unit = runBlocking {
     val connections = Collections.synchronizedSet<DefaultWebSocketServerSession>(LinkedHashSet())
@@ -43,7 +42,7 @@ fun main(): Unit = runBlocking {
                         delay(1000)
                         send(Frame.Text("Hello, world"))
                     }
-                }finally {
+                } finally {
                     println("Closed")
                 }
             }

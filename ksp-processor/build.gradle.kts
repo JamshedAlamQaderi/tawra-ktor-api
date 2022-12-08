@@ -1,8 +1,9 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.multiplatform)
+    alias(libs.plugins.ktlint)
+    alias(libs.plugins.kover)
 }
-
 
 group = "com.jamshedalamqaderi"
 version = libs.versions.tawraKtorApiVersion
@@ -41,4 +42,3 @@ kotlin {
         val jvmTest by getting
     }
 }
-

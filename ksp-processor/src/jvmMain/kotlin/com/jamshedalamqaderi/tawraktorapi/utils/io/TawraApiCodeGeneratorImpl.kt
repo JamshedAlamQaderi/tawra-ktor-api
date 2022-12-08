@@ -45,8 +45,6 @@ class TawraApiCodeGeneratorImpl(options: Map<String, String>) : TawraApiCodeGene
                 throw FileSystemException(saveDir, null, "Couldn't making the directory")
             }
         }
-        return FileOutputStream(File(saveDir, "${fileName}.$extensionName"))
+        return FileOutputStream(File(saveDir, "$fileName.$extensionName"))
     }
-
-
 }

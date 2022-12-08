@@ -58,7 +58,7 @@ class BackendRequestMethodVisitorImpl(
                 callApiFunctionToRespond(appender, declaration)
             }
         } else {
-            //todo: throw UnknownHttpMethodException
+            // todo: throw UnknownHttpMethodException
         }
     }
 

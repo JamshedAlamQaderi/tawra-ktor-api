@@ -2,6 +2,10 @@ plugins {
     id("com.jamshedalamqaderi.tawra-ktor-api-plugin")
 }
 
+repositories{
+    mavenCentral()
+}
+
 kotlin {
     jvm {
         compilations.all {

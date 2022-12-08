@@ -9,18 +9,18 @@ plugins {
     `kotlin-dsl`
     `java-gradle-plugin`
     alias(libs.plugins.pluginPublish)
+    alias(libs.plugins.ktlint)
+    alias(libs.plugins.kover)
 }
 
 group = "com.jamshedalamqaderi"
 version = libs.versions.tawraKtorApiVersion
-
 
 publishing {
     repositories {
         mavenLocal()
     }
 }
-
 
 pluginBundle {
     website = "https://jamshedalamqaderi.com"

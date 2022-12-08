@@ -26,7 +26,6 @@ class SimpleApiExample {
     }
 }
 
-
 @Websocket("ws/{deviceId}")
 class EventListener {
 
@@ -36,7 +35,6 @@ class EventListener {
         @PathParam deviceId: String,
         @QueryParam age: String?
     ) {
-
     }
 
     @OnMessage
@@ -46,12 +44,9 @@ class EventListener {
 
     @OnError
     fun onError(t: Throwable) {
-
     }
 
     @OnDisconnected
     fun onDisconnected(session: WebSocketServerSession) {
-
     }
-
 }

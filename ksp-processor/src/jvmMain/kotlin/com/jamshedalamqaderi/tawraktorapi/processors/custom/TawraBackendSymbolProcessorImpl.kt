@@ -64,7 +64,7 @@ class TawraBackendSymbolProcessorImpl(
             backendChildCodeAppender.writeToFile(codeGenerator)
             // import generated websocket function
             backendCodeAppender.addImport(packageName, listOf(functionName))
-            backendCodeAppender.addStatement("${functionName}()")
+            backendCodeAppender.addStatement("$functionName()")
         }
     }
 }

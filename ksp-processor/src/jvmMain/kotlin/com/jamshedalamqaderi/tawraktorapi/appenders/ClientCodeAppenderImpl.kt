@@ -32,7 +32,7 @@ class ClientCodeAppenderImpl(
                         return instance!!
                     }
                 }
-        """.trimIndent()
+            """.trimIndent()
         )
         block()
         addCode("\n}")

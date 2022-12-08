@@ -10,18 +10,15 @@ import io.ktor.client.plugins.websocket.sendSerialized
 import io.ktor.client.plugins.websocket.webSocketSession
 import kotlinx.coroutines.runBlocking
 
-
 fun setup() = runBlocking {
     val client = HttpClient(CIO) {
         install(WebSockets) {
-
         }
         defaultRequest {
-
         }
     }
     val session: DefaultClientWebSocketSession = client.webSocketSession("/hello")
-    while (true){
+    while (true) {
         val message = session.receiveDeserialized<Student>()
         session.sendSerialized(Student("name"))
     }

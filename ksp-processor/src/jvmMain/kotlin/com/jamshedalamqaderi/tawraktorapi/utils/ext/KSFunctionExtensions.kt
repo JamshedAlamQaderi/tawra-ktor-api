@@ -13,7 +13,7 @@ object KSFunctionExtensions {
         block: () -> Unit
     ) {
         codeAppender.addStatement("call.respond(")
-        codeAppender.addStatement("${classObjectRef}.${simpleName.asString()}(")
+        codeAppender.addStatement("$classObjectRef.${simpleName.asString()}(")
         block()
         codeAppender.addStatement(")")
         codeAppender.addStatement(")")

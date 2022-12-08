@@ -19,8 +19,8 @@ class BackendWebSocketParamVisitorImpl(
         ) {
             appender.addStatement("this,")
             return
-        } else if (declaration.qualifiedType() == Exception::class.qualifiedName
-            || declaration.qualifiedType() == Throwable::class.qualifiedName
+        } else if (declaration.qualifiedType() == Exception::class.qualifiedName ||
+            declaration.qualifiedType() == Throwable::class.qualifiedName
         ) {
             appender.addStatement("e,")
             return

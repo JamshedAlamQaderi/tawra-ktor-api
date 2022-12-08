@@ -48,17 +48,16 @@ class ClientWebsocketMessageEventVisitorImpl(
             functionParamVisitor.visit(appender, ksValueParameter)
         }
         val returnDataType = declaration.returnType?.qualifiedType ?: "Unit"
-        appender.addStatement(") = flow<${returnDataType}>{")
+        appender.addStatement(") = flow<$returnDataType>{")
         appender.addCode(
             """
             session = client.webSocketSession("$generatedPathTemplate")
             while (true){
-                emit(session.receiveDeserialized<${returnDataType}>())
+                emit(session.receiveDeserialized<$returnDataType>())
             }
-        """.trimIndent()
+            """.trimIndent()
         )
         appender.addStatement("}")
-
 
         // generate send function
         appender.addStatement("\n suspend fun send(")

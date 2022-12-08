@@ -32,7 +32,6 @@ class BackendWebSocketEventVisitorImpl(
         wrapper(OnMessage::class)
         wrapper(OnError::class)
         wrapper(OnDisconnected::class)
-
     }
 
     @OptIn(KspExperimental::class)

@@ -25,5 +25,4 @@ object AnnotationExtensions {
                 ?.asString() == T::class.qualifiedName
         }
     }
-
 }

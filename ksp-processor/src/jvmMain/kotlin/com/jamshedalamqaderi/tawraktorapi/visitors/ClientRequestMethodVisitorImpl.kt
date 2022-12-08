@@ -155,7 +155,7 @@ class ClientRequestMethodVisitorImpl(
                         "${ksValueParameter.name?.asString()}",
                         "${'$'}{${multipartFormParam.paramName}.${ksValueParameter.name?.asString()}}"
                     )
-                    """.trimIndent()
+                        """.trimIndent()
                     }
                 }
                 codeAppender.addImport("io.ktor.http", listOf("ContentType", "contentType"))

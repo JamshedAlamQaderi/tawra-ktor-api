@@ -77,7 +77,5 @@ class BackendRequestParamVisitorImpl(
         if (!ksValueParameter.isAnnotationPresent(Channel::class)) return
         codeAppender.addImport("io.ktor.server.request", listOf("receiveChannel"))
         codeAppender.addStatement("call.receiveChannel(),")
-
     }
-
 }

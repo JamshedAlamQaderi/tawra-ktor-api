@@ -67,7 +67,6 @@ object KSValueParameterExtensions {
         )
     }
 
-
     @OptIn(KspExperimental::class)
     fun KSValueParameter.processQueryParamAnnotation(
         codeAppender: BackendCodeAppender

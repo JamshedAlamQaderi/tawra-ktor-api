@@ -30,7 +30,6 @@ annotation class Patch(val path: String = "")
 @MustBeDocumented
 annotation class Put(val path: String = "")
 
-
 /*
 * Request data annotations
 * */
@@ -92,5 +91,3 @@ annotation class OnError
 @Retention(AnnotationRetention.SOURCE)
 @MustBeDocumented
 annotation class OnMessage
-
-
