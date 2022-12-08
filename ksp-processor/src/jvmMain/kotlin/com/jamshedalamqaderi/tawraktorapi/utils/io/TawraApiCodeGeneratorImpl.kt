@@ -15,7 +15,7 @@ class TawraApiCodeGeneratorImpl(options: Map<String, String>) : TawraApiCodeGene
     private val jvmModuleDir: String = options[jvmModulePathKey]!!
     private val commonModuleDir: String = options[commonModulePathKey]!!
     override val packageName: String =
-        options[outputPackageName] ?: "com.jamshedalamqaderi.tawraktorapi"
+        options[outputPackageName] ?: "tawraKtorApi"
 
     override fun createNewJvmModuleFile(
         packageName: String,

@@ -5,7 +5,7 @@ plugins {
 
 
 group = "com.jamshedalamqaderi"
-version = "0.0.1-SNAPSHOT"
+version = libs.versions.tawraKtorApiVersion
 
 kotlin {
     jvm {
@@ -35,6 +35,7 @@ kotlin {
                 implementation(libs.kotlinPoetKsp)
                 implementation(libs.ktorServerCore)
                 implementation(libs.ktorServerNetty)
+                implementation(libs.ktorServerWebsocket)
             }
         }
         val jvmTest by getting

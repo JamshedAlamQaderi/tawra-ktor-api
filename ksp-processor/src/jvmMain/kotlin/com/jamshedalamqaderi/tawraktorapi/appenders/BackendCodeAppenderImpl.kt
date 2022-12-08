@@ -39,6 +39,13 @@ class BackendCodeAppenderImpl(
         requestMethodPreset("delete", path, block)
     }
 
+    override fun addWebSocket(path: String, block: () -> Unit) {
+        addImport("io.ktor.server.websocket", listOf("webSocket"))
+        addStatement("webSocket(%P){", path)
+        block()
+        addStatement("}")
+    }
+
     override fun addImport(packageName: String, names: Iterable<String>) {
         fileSpecBuilder.addImport(packageName, names)
     }

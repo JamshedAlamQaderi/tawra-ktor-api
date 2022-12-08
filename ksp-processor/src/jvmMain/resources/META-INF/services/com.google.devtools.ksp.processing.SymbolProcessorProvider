@@ -1,2 +1,1 @@
-com.jamshedalamqaderi.tawraktorapi.providers.BackendRestProcessorProvider
-com.jamshedalamqaderi.tawraktorapi.providers.ClientRestProcessorProvider
+com.jamshedalamqaderi.tawraktorapi.providers.TawraKtorApiProcessorProvider

@@ -6,6 +6,10 @@ import com.jamshedalamqaderi.tawraktorapi.api.annotations.Delete
 import com.jamshedalamqaderi.tawraktorapi.api.annotations.FormParam
 import com.jamshedalamqaderi.tawraktorapi.api.annotations.Get
 import com.jamshedalamqaderi.tawraktorapi.api.annotations.MultipartForm
+import com.jamshedalamqaderi.tawraktorapi.api.annotations.OnConnected
+import com.jamshedalamqaderi.tawraktorapi.api.annotations.OnDisconnected
+import com.jamshedalamqaderi.tawraktorapi.api.annotations.OnError
+import com.jamshedalamqaderi.tawraktorapi.api.annotations.OnMessage
 import com.jamshedalamqaderi.tawraktorapi.api.annotations.Patch
 import com.jamshedalamqaderi.tawraktorapi.api.annotations.PathParam
 import com.jamshedalamqaderi.tawraktorapi.api.annotations.Post
@@ -27,5 +31,12 @@ object Utils {
         Body::class,
         MultipartForm::class,
         Channel::class
+    )
+
+    val listOfWebsocketEventAnnotations = listOf(
+        OnConnected::class,
+        OnDisconnected::class,
+        OnError::class,
+        OnMessage::class,
     )
 }

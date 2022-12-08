@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "com.jamshedalamqaderi"
-version = "0.0.1-SNAPSHOT"
+version = libs.versions.tawraKtorApiVersion
 
 
 publishing {

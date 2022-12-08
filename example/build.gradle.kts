@@ -15,6 +15,8 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(libs.ktorClientCore)
+                implementation(libs.ktorClientWebsocket)
+                implementation(libs.ktorClientCio)
                 implementation("com.jamshedalamqaderi:tawra-ktor-api")
             }
         }
@@ -30,6 +32,7 @@ kotlin {
                 implementation(libs.logback)
                 implementation(libs.ktorServerContentNegotiation)
                 implementation(libs.ktorSerializationJvm)
+                implementation(libs.ktorServerWebsocket)
             }
         }
         val jvmTest by getting

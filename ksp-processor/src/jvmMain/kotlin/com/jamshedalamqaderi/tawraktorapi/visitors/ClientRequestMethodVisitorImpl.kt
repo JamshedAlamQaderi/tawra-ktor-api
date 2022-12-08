@@ -21,6 +21,7 @@ import com.jamshedalamqaderi.tawraktorapi.models.RequestParamType
 import com.jamshedalamqaderi.tawraktorapi.utils.ext.AnnotationExtensions.findAnnotatedWith
 import com.jamshedalamqaderi.tawraktorapi.utils.ext.AnnotationExtensions.isAnnotationExists
 import com.jamshedalamqaderi.tawraktorapi.utils.ext.KSValueParameterExtensions.constructorParams
+import com.jamshedalamqaderi.tawraktorapi.utils.ext.generatePath
 import com.jamshedalamqaderi.tawraktorapi.utils.ext.qualifiedType
 import com.soywiz.korio.file.VfsFile
 
@@ -92,7 +93,7 @@ class ClientRequestMethodVisitorImpl(
         ksFunctionDeclaration: KSFunctionDeclaration
     ): RequestBodyBlock {
         return { requestParams ->
-            val urlPath = generatePath(parentPath + path, requestParams)
+            val urlPath = requestParams.generatePath(parentPath + path)
             codeAppender.addImport("io.ktor.client.request", listOf(requestName))
             codeAppender.addCode("\nreturn client.$requestName(%P){", urlPath)
             addBodyToRequest(requestParams)
@@ -189,24 +190,6 @@ class ClientRequestMethodVisitorImpl(
                 }
             )
         """.trimIndent()
-    }
-
-    private fun generatePath(actualPath: String, params: List<RequestParam>): String {
-        var path = actualPath
-        // inject variable to path params
-        params
-            .filter { it.paramType == RequestParamType.PATH_PARAM }
-            .forEach { param ->
-                path = path.replace("{${param.paramKey}}", "$" + param.paramName)
-            }
-        // inject query param values
-        val queries = params
-            .filter { it.paramType == RequestParamType.QUERY_PARAM }
-            .joinToString("=") { param -> "${param.paramKey}=$${param.paramName}" }
-        if (queries.isNotEmpty()) {
-            path = "$path?$queries"
-        }
-        return path
     }
 
     private fun createFunction(

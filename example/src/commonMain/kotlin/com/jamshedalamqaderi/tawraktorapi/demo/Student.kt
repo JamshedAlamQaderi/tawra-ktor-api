@@ -1,3 +1,10 @@
 package com.jamshedalamqaderi.tawraktorapi.demo
 
-data class Student(val name: String)
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Student(val name: String) {
+    companion object {
+        val Empty = Student("")
+    }
+}

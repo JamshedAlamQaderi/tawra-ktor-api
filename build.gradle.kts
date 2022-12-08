@@ -6,7 +6,7 @@ plugins {
 
 subprojects {
     group = "com.jamshedalamqaderi"
-    version = "0.0.1-SNAPSHOT"
+    version = rootProject.libs.versions.tawraKtorApiVersion
     apply {
         plugin(rootProject.libs.plugins.multiplatform.get().pluginId)
         plugin(rootProject.libs.plugins.serialization.get().pluginId)

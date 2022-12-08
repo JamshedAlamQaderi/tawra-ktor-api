@@ -7,4 +7,6 @@ interface BackendCodeAppender : CodeAppender {
     fun addPut(path: String, block: () -> Unit)
     fun addPatch(path: String, block: () -> Unit)
     fun addDelete(path: String, block: () -> Unit)
+
+    fun addWebSocket(path: String, block: () -> Unit)
 }

@@ -13,12 +13,8 @@ class ClientCodeAppenderImpl(
         FileSpec.scriptBuilder(packageName = packageName, fileName = filename)
 
     override fun addExtensionProperty(propertyName: String, qualifiedReturnType: String) {
-        addCode(
-            """
-            val ${HttpClient::class.qualifiedName}.$propertyName
-                get() = $qualifiedReturnType.getInstance(this)
-        """.trimIndent()
-        )
+        addStatement("\nval ${HttpClient::class.qualifiedName}.$propertyName")
+        addStatement("\tget() = $qualifiedReturnType.getInstance(this)")
     }
 
     override fun createClass(name: String, block: () -> Unit) {

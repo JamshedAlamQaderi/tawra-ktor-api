@@ -65,3 +65,32 @@ annotation class FormParam(val name: String = "")
 @MustBeDocumented
 annotation class MultipartForm(val uploadPath: String = "upload/")
 
+/*
+* Websocket
+* */
+@Target(AnnotationTarget.CLASS)
+@Retention(AnnotationRetention.SOURCE)
+@MustBeDocumented
+annotation class Websocket(val path: String = "")
+
+@Target(AnnotationTarget.FUNCTION)
+@Retention(AnnotationRetention.SOURCE)
+@MustBeDocumented
+annotation class OnConnected
+
+@Target(AnnotationTarget.FUNCTION)
+@Retention(AnnotationRetention.SOURCE)
+@MustBeDocumented
+annotation class OnDisconnected
+
+@Target(AnnotationTarget.FUNCTION)
+@Retention(AnnotationRetention.SOURCE)
+@MustBeDocumented
+annotation class OnError
+
+@Target(AnnotationTarget.FUNCTION)
+@Retention(AnnotationRetention.SOURCE)
+@MustBeDocumented
+annotation class OnMessage
+
+
