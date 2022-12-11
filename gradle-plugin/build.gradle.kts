@@ -15,7 +15,7 @@ plugins {
 val projectVersion: String? by project
 
 group = "com.jamshedalamqaderi"
-version = projectVersion ?: "0.0.1-SNAPSHOT"
+version = projectVersion?.replaceFirst("v", "") ?: "0.0.1-SNAPSHOT"
 
 publishing {
     repositories {

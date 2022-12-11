@@ -10,7 +10,7 @@ val projectVersion: String? by project
 
 subprojects {
     group = "com.jamshedalamqaderi"
-    version = projectVersion ?: "0.0.1-SNAPSHOT"
+    version = projectVersion?.replaceFirst("v", "") ?: "0.0.1-SNAPSHOT"
     apply {
         plugin(rootProject.libs.plugins.multiplatform.get().pluginId)
         plugin(rootProject.libs.plugins.serialization.get().pluginId)
