@@ -24,7 +24,7 @@ jobs:
           check-latest: true
           cache: 'gradle'
       - name: Checking for lint issues
-        run: gradle ktlintCheck
+        run: ./gradlew ktlintCheck
       - name: Checking tag ref
         run: echo ${{steps.vars.outputs.tag}}
 #      - name: Publishing to maven central
