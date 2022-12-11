@@ -12,9 +12,10 @@ plugins {
     alias(libs.plugins.ktlint)
     alias(libs.plugins.kover)
 }
+val projectVersion: String? by project
 
 group = "com.jamshedalamqaderi"
-version = libs.versions.tawraKtorApiVersion
+version = projectVersion ?: "0.0.1-SNAPSHOT"
 
 publishing {
     repositories {

@@ -3,13 +3,16 @@ plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.kover)
+    alias(libs.plugins.dokka)
     `java-library`
     `maven-publish`
     signing
 }
 
+val projectVersion: String? by project
+
 group = "com.jamshedalamqaderi"
-version = libs.versions.tawraKtorApiVersion
+version = projectVersion ?: "0.0.1-SNAPSHOT"
 
 kotlin {
     jvm {
@@ -46,11 +49,17 @@ kotlin {
     }
 }
 
-val javadocJar by tasks.registering(Jar::class) {
+val dokkaHtml by tasks.getting(org.jetbrains.dokka.gradle.DokkaTask::class)
+
+val javadocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
+    dependsOn(dokkaHtml)
     archiveClassifier.set("javadoc")
+    from(dokkaHtml.outputDirectory.get())
 }
 
 publishing {
+    val sonatypeUsername: String? by project
+    val sonatypePassword: String? by project
     repositories {
         maven {
             name = "SonatypeRepository"
@@ -60,8 +69,8 @@ publishing {
                 uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
             url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
             credentials {
-                username = System.getenv("SONATYPE_USERNAME")
-                password = System.getenv("SONATYPE_PASSWORD")
+                username = sonatypeUsername
+                password = sonatypePassword
             }
         }
     }
@@ -69,7 +78,8 @@ publishing {
         withType<MavenPublication> {
             group = "com.jamshedalamqaderi"
             artifactId = "tawra-ktor-api"
-            artifact(javadocJar.get())
+            version = "0.0.2-SNAPSHOT" //project.version as String
+
             pom {
                 name.set("Tawra Ktor Api")
                 description.set("An Multiplatform Ktor client code generator from Ktor Server Implementation wrapper")
@@ -83,7 +93,8 @@ publishing {
                     url.set("https://github.com/JamshedAlamQaderi/tawra-ktor-api/issues")
                 }
                 scm {
-                    connection.set("https://github.com/JamshedAlamQaderi/tawra-ktor-api.git")
+                    connection.set("scm:git:git:github.com/JamshedAlamQaderi/tawra-ktor-api.git")
+                    developerConnection.set("scm:git:ssh://github.com/JamshedAlamQaderi/tawra-ktor-api.git")
                     url.set("https://github.com/JamshedAlamQaderi/tawra-ktor-api")
                 }
                 developers {
@@ -100,8 +111,9 @@ publishing {
     }
 }
 
-
 signing {
-    useInMemoryPgpKeys(System.getenv("GPG_PRIVATE_KEY"), System.getenv("GPG_PASSWORD"))
+    val signingKey: String? by project
+    val signingPassword: String? by project
+    useInMemoryPgpKeys(signingKey, signingPassword)
     sign(publishing.publications)
 }

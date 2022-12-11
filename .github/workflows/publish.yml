@@ -1,6 +1,10 @@
 name: 'Publish to Maven Central'
 
-on: [push]
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+-dev-[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 concurrency:
   group: 'tawra-ktor-api-publish'
@@ -19,10 +23,15 @@ jobs:
           java-version: '17'
           check-latest: true
           cache: 'gradle'
-      - name: Publishing to maven central
-        run: gradle publishToCentral
-        env:
-          SONATYPE_USERNAME: ${{secrets.SONATYPE_USERNAME}}
-          SONATYPE_PASSWORD: ${{secrets.SONATYPE_PASSWORD}}
-          GPG_PRIVATE_KEY: ${{secrets.GPG_PRIVATE_KEY}}
-          GPG_PASSWORD: ${{secrets.GPG_PASSWORD}}
+      - name: Checking for lint issues
+        run: gradle ktlintCheck
+      - name: Checking tag ref
+        run: echo ${{steps.vars.outputs.tag}}
+#      - name: Publishing to maven central
+#        run: gradle publishToMavenCentral
+#        env:
+#          ORG_GRADLE_PROJECT_projectVersion: ${{steps.vars.outputs.tag}}
+#          ORG_GRADLE_PROJECT_sonatypeUsername: ${{secrets.SONATYPE_USERNAME}}
+#          ORG_GRADLE_PROJECT_sonatypePassword: ${{secrets.SONATYPE_PASSWORD}}
+#          ORG_GRADLE_PROJECT_signingKey: ${{secrets.GPG_PRIVATE_KEY}}
+#          ORG_GRADLE_PROJECT_signingPassword: ${{secrets.GPG_PASSWORD}}

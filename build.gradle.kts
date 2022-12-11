@@ -6,9 +6,11 @@ plugins {
     alias(libs.plugins.kover) apply false
 }
 
+val projectVersion: String? by project
+
 subprojects {
     group = "com.jamshedalamqaderi"
-    version = rootProject.libs.versions.tawraKtorApiVersion
+    version = projectVersion ?: "0.0.1-SNAPSHOT"
     apply {
         plugin(rootProject.libs.plugins.multiplatform.get().pluginId)
         plugin(rootProject.libs.plugins.serialization.get().pluginId)
@@ -16,6 +18,7 @@ subprojects {
         plugin(rootProject.libs.plugins.kover.get().pluginId)
     }
 }
+
 
 fun registerTask(taskName: String, group: String = "") {
     tasks.register(taskName) {
@@ -31,7 +34,8 @@ registerTask("ktlintFormat", "tawra-ktor-api")
 registerTask("ktlintCheck", "tawra-ktor-api")
 registerTask("koverXmlReport", "tawra-ktor-api")
 registerTask("koverHtmlReport", "tawra-ktor-api")
+registerTask("detekt", "tawra-ktor-api")
 
-tasks.register("publishToCentral") {
-    dependsOn(gradle.includedBuild("ksp-processor").task("publish"))
+tasks.register("publishToMavenCentral") {
+    dependsOn(gradle.includedBuild("ksp-processor").task(":publish"))
 }
