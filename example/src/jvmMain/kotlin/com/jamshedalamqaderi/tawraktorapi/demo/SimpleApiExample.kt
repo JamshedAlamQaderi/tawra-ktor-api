@@ -39,7 +39,6 @@ class EventListener {
 
     @OnMessage(Student::class)
     fun onMessage(@PathParam deviceId: String, @Body student: Student) {
-
     }
 
     @OnError

@@ -78,7 +78,7 @@ publishing {
         withType<MavenPublication> {
             group = "com.jamshedalamqaderi"
             artifactId = "tawra-ktor-api"
-            version = "0.0.2-SNAPSHOT" //project.version as String
+            version = projectVersion
 
             pom {
                 name.set("Tawra Ktor Api")
