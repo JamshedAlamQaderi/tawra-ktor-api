@@ -1,5 +1,7 @@
 package com.jamshedalamqaderi.tawraktorapi.api.annotations
 
+import kotlin.reflect.KClass
+
 @Target(AnnotationTarget.CLASS)
 @Retention(AnnotationRetention.SOURCE)
 @MustBeDocumented
@@ -90,4 +92,4 @@ annotation class OnError
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.SOURCE)
 @MustBeDocumented
-annotation class OnMessage
+annotation class OnMessage(val transferDataType: KClass<*>)

@@ -9,7 +9,7 @@ class TawraApiCodeGeneratorImpl(options: Map<String, String>) : TawraApiCodeGene
     companion object {
         const val jvmModulePathKey = "jvm-output-path"
         const val commonModulePathKey = "common-output-path"
-        const val outputPackageName = "package"
+        const val outputPackageName = "package-name"
     }
 
     private val jvmModuleDir: String = options[jvmModulePathKey]!!
