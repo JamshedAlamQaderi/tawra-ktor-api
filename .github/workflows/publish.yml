@@ -1,7 +1,6 @@
 name: 'Publish to Maven Central'
 
-on:
-  push:
+on: [push]
 
 concurrency:
   group: 'tawra-ktor-api-publish'
