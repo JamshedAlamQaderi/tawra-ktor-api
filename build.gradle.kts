@@ -31,3 +31,7 @@ registerTask("ktlintFormat", "tawra-ktor-api")
 registerTask("ktlintCheck", "tawra-ktor-api")
 registerTask("koverXmlReport", "tawra-ktor-api")
 registerTask("koverHtmlReport", "tawra-ktor-api")
+
+tasks.register("publishToCentral") {
+    dependsOn(gradle.includedBuild("ksp-processor").task("publish"))
+}

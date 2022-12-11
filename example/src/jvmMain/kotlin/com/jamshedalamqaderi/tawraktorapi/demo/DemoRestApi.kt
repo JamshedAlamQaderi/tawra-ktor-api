@@ -1,5 +1,6 @@
 package com.jamshedalamqaderi.tawraktorapi.demo
 
+import com.jamshedalamqaderi.tawraktorapi.tawraKtorApiRoutes
 import io.ktor.serialization.kotlinx.KotlinxWebsocketSerializationConverter
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.install
@@ -33,7 +34,7 @@ fun main(): Unit = runBlocking {
             json()
         }
         routing {
-//            tawraKtorApiRoutes()
+            tawraKtorApiRoutes()
             webSocket("/echo") {
                 println("Connected")
                 try {

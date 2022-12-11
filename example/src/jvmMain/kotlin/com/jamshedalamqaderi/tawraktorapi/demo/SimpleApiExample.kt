@@ -37,9 +37,9 @@ class EventListener {
     ) {
     }
 
-    @OnMessage
-    fun onMessage(@PathParam deviceId: String, @Body student: Student): Student {
-        return Student.Empty
+    @OnMessage(Student::class)
+    fun onMessage(@PathParam deviceId: String, @Body student: Student) {
+
     }
 
     @OnError

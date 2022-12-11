@@ -2,8 +2,12 @@ plugins {
     id("com.jamshedalamqaderi.tawra-ktor-api-plugin")
 }
 
-repositories{
+repositories {
     mavenCentral()
+}
+
+tawraKtorApi {
+    packageName.set("com.jamshedalamqaderi.tawraktorapi")
 }
 
 kotlin {

@@ -4,22 +4,29 @@ import com.google.devtools.ksp.gradle.KspExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.create
 
 class TawraKtorApiPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
+        val extension = project.extensions.create<TawraKtorApiExtension>("tawraKtorApi")
+        extension.packageName.convention("tawraktorapi")
+
         project.pluginManager.apply("com.google.devtools.ksp")
-        project.configure<KspExtension> {
-            arg(
-                "jvm-output-path",
-                jvmMainOutputDir(project)
-            )
-            arg(
-                "common-output-path",
-                commonMainOutputDir(project)
-            )
-        }
+
         project.afterEvaluate {
+            project.configure<KspExtension> {
+                arg(
+                    "jvm-output-path",
+                    jvmMainOutputDir(project)
+                )
+                arg(
+                    "common-output-path",
+                    commonMainOutputDir(project)
+                )
+                arg("package-name", extension.packageName.get())
+            }
+
             dependencies.add("kspJvm", "com.jamshedalamqaderi:tawra-ktor-api")
             val kotlinExtension =
                 extensions.getByName("kotlin") as org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
