@@ -46,3 +46,9 @@ tasks.register("test") {
     dependsOn(gradle.includedBuild("gradle-plugin").task(":test"))
     dependsOn(gradle.includedBuild("ksp-processor").task(":allTests"))
 }
+
+tasks.register("checkP"){
+    val gradleKey:String? by project
+    val gradleSecret:String? by project
+    println("Gradle Key: $gradleKey & secret: $gradleSecret")
+}
