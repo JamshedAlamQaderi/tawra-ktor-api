@@ -17,12 +17,6 @@ val projectVersion: String? by project
 group = "com.jamshedalamqaderi"
 version = projectVersion?.replaceFirst("v", "") ?: "0.0.1-SNAPSHOT"
 
-publishing {
-    repositories {
-        mavenLocal()
-    }
-}
-
 pluginBundle {
     website = "https://jamshedalamqaderi.com"
     vcsUrl = "https://github.com/JamshedAlamQaderi/tawra-ktor-api"
@@ -52,6 +46,9 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.21")
     implementation("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.7.21-1.0.8")
     implementation("com.facebook:ktfmt:0.41")
+    testImplementation(gradleTestKit())
+    testImplementation(platform("org.junit:junit-bom:5.9.1"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
 tasks.getByName<Test>("test") {
