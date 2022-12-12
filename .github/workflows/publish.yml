@@ -34,4 +34,4 @@ jobs:
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_PRIVATE_KEY }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_PASSWORD }}
       - name: Publish gradle plugin to GradlePluginPortal
-        run: ./gradlew publish -Pgradle.publish.key=${{ secrets.GRADLE_KEY }} -Pgradle.publish.secret=${{secrets.GRADLE_SECRET}}
+        run: ./gradlew publishToGradlePluginPortal -Pgradle.publish.key=${{ secrets.GRADLE_KEY }} -Pgradle.publish.secret=${{secrets.GRADLE_SECRET}}

@@ -40,6 +40,10 @@ tasks.register("publishToMavenCentral") {
     dependsOn(gradle.includedBuild("ksp-processor").task(":publish"))
 }
 
+tasks.register("publishToGradlePluginPortal") {
+    dependsOn(gradle.includedBuild("gradle-plugin").task(":publish"))
+}
+
 tasks.register("test") {
     group = "tawra-ktor-api"
     dependsOn(":example:allTests")
@@ -47,8 +51,8 @@ tasks.register("test") {
     dependsOn(gradle.includedBuild("ksp-processor").task(":allTests"))
 }
 
-tasks.register("checkP"){
-    val gradleKey:String? by project
-    val gradleSecret:String? by project
+tasks.register("checkP") {
+    val gradleKey: String? by project
+    val gradleSecret: String? by project
     println("Gradle Key: $gradleKey & secret: $gradleSecret")
 }
