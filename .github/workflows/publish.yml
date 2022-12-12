@@ -24,7 +24,7 @@ jobs:
           check-latest: true
           cache: 'gradle'
       - name: Checking for lint issues
-        run: ./gradlew ktlintCheck
+        run: ./gradlew check
       - name: Publish library to maven central
         run: ./gradlew publishToMavenCentral
         env:

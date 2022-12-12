@@ -1,3 +1,5 @@
+import com.jamshedalamqaderi.tawraktorapi.TawraKtorApiDeps
+
 plugins {
     id("com.jamshedalamqaderi.tawra-ktor-api-plugin")
 }
@@ -8,6 +10,12 @@ repositories {
 
 tawraKtorApi {
     packageName.set("com.jamshedalamqaderi.tawraktorapi")
+}
+
+ktlint {
+    filter {
+        exclude { it.file.path.contains("$buildDir/generated/tawra-ktor-api") }
+    }
 }
 
 kotlin {
@@ -25,7 +33,7 @@ kotlin {
                 implementation(libs.ktorClientCore)
                 implementation(libs.ktorClientWebsocket)
                 implementation(libs.ktorClientCio)
-                implementation("com.jamshedalamqaderi:tawra-ktor-api")
+                implementation(TawraKtorApiDeps.tawraKtorApi)
             }
         }
         val commonTest by getting {

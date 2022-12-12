@@ -27,7 +27,7 @@ class TawraKtorApiPlugin : Plugin<Project> {
                 arg("package-name", extension.packageName.get())
             }
 
-            dependencies.add("kspJvm", "com.jamshedalamqaderi:tawra-ktor-api")
+            dependencies.add("kspJvm", TawraKtorApiDeps.tawraKtorApi)
             val kotlinExtension =
                 extensions.getByName("kotlin") as org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
             val kotlinSourceSets = kotlinExtension.sourceSets
@@ -43,6 +43,12 @@ class TawraKtorApiPlugin : Plugin<Project> {
             group = "tawraKtorApi"
             description = "Generate client code from Ktor server Api wrapper"
             dependsOn("kspKotlinJvm")
+            dependsOn("formatGeneratedCode")
+        }
+
+        project.tasks.register("formatGeneratedCode") {
+            group = "tawraKtorApi"
+            description = "Format generated code by TawraKtorApi"
             doLast {
                 com.facebook.ktfmt.cli.Main.main(
                     arrayOf(

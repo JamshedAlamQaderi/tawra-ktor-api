@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  Publish:
+  Analyse:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

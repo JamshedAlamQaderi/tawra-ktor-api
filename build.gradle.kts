@@ -34,8 +34,15 @@ registerTask("ktlintFormat", "tawra-ktor-api")
 registerTask("ktlintCheck", "tawra-ktor-api")
 registerTask("koverXmlReport", "tawra-ktor-api")
 registerTask("koverHtmlReport", "tawra-ktor-api")
-registerTask("detekt", "tawra-ktor-api")
+registerTask("check", "tawra-ktor-api")
 
 tasks.register("publishToMavenCentral") {
     dependsOn(gradle.includedBuild("ksp-processor").task(":publish"))
+}
+
+tasks.register("test") {
+    group = "tawra-ktor-api"
+    dependsOn(":example:allTests")
+    dependsOn(gradle.includedBuild("gradle-plugin").task(":test"))
+    dependsOn(gradle.includedBuild("ksp-processor").task(":allTests"))
 }
