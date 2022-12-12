@@ -41,7 +41,7 @@ tasks.register("publishToMavenCentral") {
 }
 
 tasks.register("publishToGradlePluginPortal") {
-    dependsOn(gradle.includedBuild("gradle-plugin").task(":publish"))
+    dependsOn(gradle.includedBuild("gradle-plugin").task(":publishPlugins"))
 }
 
 tasks.register("test") {
