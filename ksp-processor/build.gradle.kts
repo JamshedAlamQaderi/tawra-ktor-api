@@ -78,14 +78,16 @@ publishing {
         withType<MavenPublication> {
             group = "com.jamshedalamqaderi"
             artifactId = "tawra-ktor-api"
-            version = projectVersion
-
+            version = project.version as String
+            artifact(javadocJar)
             pom {
                 name.set("Tawra Ktor Api")
                 description.set("An Multiplatform Ktor client code generator from Ktor Server Implementation wrapper")
                 licenses {
-                    name.set("The Apache License, Version 2.0")
-                    url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
                 }
                 url.set("https://github.com/JamshedAlamQaderi/tawra-ktor-api")
                 issueManagement {
